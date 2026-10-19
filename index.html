@@ -53,6 +53,10 @@
 #hero .hero-actions>a:last-child:hover{background:#f8fafc;border-color:#a5b4fc}
 #hero .hero-actions>a svg{color:var(--accent-primary);width:16px;height:16px}}
 @media(max-width:359px){#hero .hero-actions{grid-template-columns:1fr}}
+#hero .hero-actions>a.hero-action-purple{background:#6366f1!important;color:#fff!important;border-color:#6366f1!important}
+#hero .hero-actions>a.hero-action-purple svg{color:#fff!important}
+#hero .hero-actions>a.hero-action-white{background:#fff!important;color:#1e293b!important;border-color:#e2e8f0!important}
+#hero .hero-actions>a.hero-action-white svg{color:#6366f1!important}
 </style></head>
 <body class="relative min-h-screen antialiased selection:bg-indigo-500 selection:text-white pb-16">
 
@@ -162,11 +166,11 @@
 
           <!-- 快速行动呼吁按钮 -->
           <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3.5 pt-2 hero-actions">
-            <a href="https://github.com/zhujy9413-commits" target="_blank" rel="noopener noreferrer" class="hero-action">
+            <a href="https://github.com/zhujy9413-commits" target="_blank" rel="noopener noreferrer" class="hero-action hero-action-purple">
               <i data-lucide="sparkles" class="w-4 h-4 mr-2"></i>
               <span>逛逛我的 GitHub</span>
             </a>
-            <a href="#contact" class="hero-action">
+            <a href="#contact" class="hero-action hero-action-white">
               <i data-lucide="mail" class="w-4 h-4 text-indigo-500"></i>
               <span>即时取得联系</span>
             </a>
