@@ -1,0 +1,377 @@
+/* ==========================================================================
+   Next-Gen Personal Portfolio Theme (Synthesized from Magic UI + Uiverse + GSAP)
+   ========================================================================== */
+
+/* 引入高端排版字体: Space Grotesk (展示标题) + Plus Jakarta Sans + JetBrains Mono */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap');
+
+:root {
+  /* 字体系统 */
+  --font-display: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* 深色极客空间模式 (Dark Mode - 默认) */
+  --bg-primary: #060911;
+  --bg-secondary: #0c111d;
+  --bg-card: rgba(14, 20, 36, 0.72);
+  --bg-card-hover: rgba(20, 28, 50, 0.88);
+  --bg-inner: rgba(255, 255, 255, 0.035);
+  
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(99, 102, 241, 0.5);
+  --spotlight-color: rgba(99, 102, 241, 0.16);
+
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  --accent-primary: #6366f1;
+  --accent-cyan: #06b6d4;
+  --accent-purple: #a855f7;
+  --accent-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+  --glow-color: rgba(99, 102, 241, 0.3);
+
+  --tag-bg: rgba(99, 102, 241, 0.12);
+  --tag-text: #a5b4fc;
+  --tag-border: rgba(99, 102, 241, 0.25);
+
+  --input-bg: rgba(255, 255, 255, 0.04);
+  --input-border: rgba(255, 255, 255, 0.1);
+  --nav-bg: rgba(6, 9, 17, 0.85);
+  --modal-bg: rgba(12, 17, 29, 0.96);
+  --ambient-opacity: 0.55;
+}
+
+/* 浅色极简模式 (Light Mode) */
+[data-theme="light"] {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --bg-card-hover: rgba(255, 255, 255, 0.98);
+  --bg-inner: rgba(0, 0, 0, 0.03);
+
+  --border-color: rgba(0, 0, 0, 0.08);
+  --border-hover: rgba(79, 70, 229, 0.45);
+  --spotlight-color: rgba(99, 102, 241, 0.1);
+
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+
+  --accent-primary: #4f46e5;
+  --accent-cyan: #0891b2;
+  --accent-purple: #7c3aed;
+  --accent-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #0891b2 100%);
+  --glow-color: rgba(79, 70, 229, 0.15);
+
+  --tag-bg: rgba(79, 70, 229, 0.08);
+  --tag-text: #4338ca;
+  --tag-border: rgba(79, 70, 229, 0.2);
+
+  --input-bg: rgba(0, 0, 0, 0.025);
+  --input-border: rgba(0, 0, 0, 0.12);
+  --nav-bg: rgba(248, 250, 252, 0.88);
+  --modal-bg: rgba(255, 255, 255, 0.98);
+  --ambient-opacity: 0.25;
+}
+
+/* 全局基底 */
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* 标题专属字体 */
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* 语义化文字辅助类 */
+.text-title { color: var(--text-primary); }
+.text-body { color: var(--text-secondary); }
+.text-dim { color: var(--text-muted); }
+
+/* 优雅滚动条 */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
+
+/* 渐变流光文字 */
+.text-gradient {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ==========================================================================
+   Magic UI 核心效果: 交互式光斑追踪卡片 (Spotlight Card)
+   ========================================================================== */
+.spotlight-card {
+  position: relative;
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    650px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    var(--spotlight-color),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+@media (hover: hover) {
+  .spotlight-card:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.3), 0 0 25px var(--glow-color);
+    transform: translateY(-4px);
+  }
+}
+
+.spotlight-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ==========================================================================
+   Magic UI: Shimmer 闪光炫彩按钮 (Shimmer Button)
+   ========================================================================== */
+.shimmer-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  background: linear-gradient(110deg, #4f46e5, 45%, #818cf8, 55%, #4f46e5);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite linear;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.875rem;
+  box-shadow: 0 4px 20px -2px rgba(99, 102, 241, 0.5);
+  transition: all 0.25s ease;
+}
+
+.shimmer-btn:hover {
+  transform: scale(1.04);
+  box-shadow: 0 6px 25px 0 rgba(99, 102, 241, 0.7);
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ==========================================================================
+   Magic UI: 无限滚动跑马灯 (Infinite Marquee)
+   ========================================================================== */
+.marquee-container {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: 1.5rem;
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+}
+
+.marquee-content {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1.5rem;
+  min-width: 100%;
+  animation: scrollMarquee 30s linear infinite;
+}
+
+.marquee-container:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+@keyframes scrollMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-100% - 1.5rem)); }
+}
+
+/* ==========================================================================
+   Uiverse: 极客终端卡片 (Interactive Terminal Playground)
+   ========================================================================== */
+.terminal-window {
+  background: #090d16;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1.25rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 30px rgba(99, 102, 241, 0.15);
+  overflow: hidden;
+  font-family: var(--font-mono);
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 6px;
+}
+.terminal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.dot-red { background: #ff5f56; }
+.dot-yellow { background: #ffbd2e; }
+.dot-green { background: #27c93f; }
+
+.terminal-tab {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.terminal-tab.active {
+  background: rgba(99, 102, 241, 0.2);
+  color: #a5b4fc;
+}
+
+/* ==========================================================================
+   动效与背景粒子 Canvas
+   ========================================================================== */
+#particles-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.7;
+}
+
+.ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(130px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: var(--ambient-opacity);
+  transition: opacity 0.3s ease;
+}
+
+/* 模态框与 Toast 系统 */
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.modal-content {
+  background: var(--modal-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6);
+  animation: modalPop 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalPop {
+  0% { opacity: 0; transform: scale(0.94) translateY(16px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.custom-input {
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+.custom-input:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px var(--glow-color);
+  outline: none;
+}
+.custom-input::placeholder { color: var(--text-muted); }
+
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.toast-item {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: 14px;
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+  font-size: 0.88rem;
+  font-weight: 500;
+  animation: toastIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.toast-item.hide {
+  opacity: 0;
+  transform: translateY(10px);
+}

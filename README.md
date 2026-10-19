@@ -1,19 +1,7 @@
-# 我的个人主页与作品集
+# 朱家毅的个人主页
 
-欢迎来到我的个人主页仓库，这里展示我的个人介绍、作品和联系方式。
+地址：https://zhujy9413-commits.github.io/
 
-## 🌐 访问网页
-
-**[👉 点击打开我的个人主页](https://zhujy9413-commits.github.io/)**
-
-本页是网页源代码仓库。想浏览网站，请点击上方链接。
-
-## 页面内容
-
-- 关于我
-- 精选作品
-- 联系方式
-
-## 项目说明
-
-网站使用 HTML、CSS 和 JavaScript 编写，通过 GitHub Pages 发布。首页源代码位于 [`index.html`](./index.html)。
+基于 https://github.com/wwbtq/bento-portfolio-template 的布局、样式与交互进行个人内容适配。
+个人内容配置：`js/data.js`。无真实资料的技能、作品、经历和文章模块暂不展示。
+联系表单通过本机邮件客户端发送，无服务端收件功能。
