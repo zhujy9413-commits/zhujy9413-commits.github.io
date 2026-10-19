@@ -106,7 +106,16 @@ window.PERSONAL_DATA = {
   "projects": [],
   "projectCategories": [],
   "timeline": [],
-  "articles": [],
+  "articles": [
+    {
+      "title": "资料都给 AI 了，为什么还是做错？",
+      "date": "2026-10-13",
+      "readTime": "微信公众号原文",
+      "category": "上下文工程",
+      "summary": "从 AI 重复采用已撤回的方案谈起，梳理上下文、RAG、长期记忆和压缩机制，讨论怎样让模型依据当前有效的信息工作。",
+      "link": "https://mp.weixin.qq.com/s/a2-rKC17ZYztQA0qyGIXRA"
+    }
+  ],
   "socials": [
     {
       "name": "GitHub",
