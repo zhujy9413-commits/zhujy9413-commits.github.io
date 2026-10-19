@@ -39,7 +39,7 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="css/style.css">
 <style>
-#hero .hero-actions>a{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:8px;width:230px;min-height:52px;padding:12px 20px;border-radius:999px;font-size:14px;line-height:1.4;font-weight:600;white-space:nowrap}
+#hero .hero-actions>a{transform:none!important;opacity:1!important;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:8px;width:230px;min-height:52px;padding:12px 20px;border-radius:999px;font-size:14px;line-height:1.4;font-weight:600;white-space:nowrap}
 #hero .hero-actions>a svg{flex-shrink:0;width:18px;height:18px;margin:0}
 @media(max-width:540px){#hero .hero-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%}#hero .hero-actions>a{width:100%;min-height:48px;padding:12px 8px;font-size:12px;gap:6px}#hero .hero-actions>a svg{width:16px;height:16px}}
 @media(max-width:359px){#hero .hero-actions{grid-template-columns:1fr}}
@@ -302,8 +302,8 @@
               <span class="px-3 py-1.5 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-xs text-indigo-500 dark:text-indigo-300">证据与决定记录</span>
               <span class="px-3 py-1.5 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-xs text-indigo-500 dark:text-indigo-300">关键节点确认</span>
             </div>
-            <p class="text-xs text-dim">目前用于个人实践，暂未开放下载或在线体验。</p>
-            <a href="mailto:zhujy9413@gmail.com?subject=AIPM%20工作台交流" class="shimmer-btn !py-2.5 !px-5"><i data-lucide="mail" class="w-4 h-4 mr-2"></i>聊聊这个工作台</a>
+            <p class="text-xs text-dim">已开放源码，欢迎使用、Fork 和提出改进建议；暂未提供在线体验。</p>
+            <a href="https://github.com/zhujy9413-commits/xiaopidan-aipm-workbench" target="_blank" rel="noopener noreferrer" class="shimmer-btn !py-2.5 !px-5"><i data-lucide="github" class="w-4 h-4 mr-2"></i>查看源码与安装说明</a>
           </div>
           <div class="lg:col-span-5 p-6 sm:p-8 bg-indigo-500/5 border-t lg:border-t-0 lg:border-l border-color flex flex-col justify-center">
             <div class="flex items-center gap-2 text-sm font-semibold text-title mb-5"><i data-lucide="workflow" class="w-4 h-4 text-indigo-500"></i>六个产品工作流</div>
