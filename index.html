@@ -39,9 +39,11 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="css/style.css">
 <style>
-#hero .hero-actions>a{transform:none!important;opacity:1!important;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:8px;width:230px;min-height:52px;padding:12px 20px;border-radius:999px;font-size:14px;line-height:1.4;font-weight:600;white-space:nowrap}
-#hero .hero-actions>a svg{flex-shrink:0;width:18px;height:18px;margin:0}
-@media(max-width:540px){#hero .hero-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%}#hero .hero-actions>a{width:100%;min-height:48px;padding:12px 8px;font-size:12px;gap:6px}#hero .hero-actions>a svg{width:16px;height:16px}}
+#hero .hero-actions>a{background:rgba(99,102,241,.12);color:var(--text-primary);border:1px solid rgba(99,102,241,.28);box-shadow:none;animation:none;transition:background .2s,border-color .2s;transform:none!important;opacity:1!important;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:8px;width:230px;min-height:52px;padding:12px 20px;border-radius:14px;font-size:14px;line-height:1.4;font-weight:600;white-space:nowrap}
+#hero .hero-actions>a:hover{background:rgba(99,102,241,.22);border-color:rgba(99,102,241,.55)}
+#hero .hero-actions>a svg{color:var(--accent-primary);flex-shrink:0;width:18px;height:18px;margin:0}
+@media(max-width:540px){#hero .hero-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%}#hero .hero-actions>a{width:100%;min-height:48px;padding:12px 8px;font-size:12px;gap:6px}#hero .hero-actions>a:hover{background:rgba(99,102,241,.22);border-color:rgba(99,102,241,.55)}
+#hero .hero-actions>a svg{color:var(--accent-primary);width:16px;height:16px}}
 @media(max-width:359px){#hero .hero-actions{grid-template-columns:1fr}}
 </style></head>
 <body class="relative min-h-screen antialiased selection:bg-indigo-500 selection:text-white pb-16">
@@ -152,11 +154,11 @@
 
           <!-- 快速行动呼吁按钮 -->
           <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3.5 pt-2 hero-actions">
-            <a href="https://github.com/zhujy9413-commits" target="_blank" rel="noopener noreferrer" class="shimmer-btn">
+            <a href="https://github.com/zhujy9413-commits" target="_blank" rel="noopener noreferrer" class="hero-action">
               <i data-lucide="sparkles" class="w-4 h-4 mr-2"></i>
               <span>逛逛我的 GitHub</span>
             </a>
-            <a href="#contact" class="spotlight-card px-6 py-3 text-xs sm:text-sm font-semibold text-title flex items-center gap-2">
+            <a href="#contact" class="hero-action">
               <i data-lucide="mail" class="w-4 h-4 text-indigo-500"></i>
               <span>即时取得联系</span>
             </a>
