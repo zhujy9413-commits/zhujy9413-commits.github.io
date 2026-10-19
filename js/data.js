@@ -76,7 +76,7 @@ window.PERSONAL_DATA = {
     "paragraphs": [
       "你好，我是朱家毅，一个爱鼓捣点小玩意的男人。",
       "这个小站是我的个人空间，用来记录想法、探索和有趣的尝试。",
-      "目前还没有整理好的作品，后续会慢慢添加。欢迎来我的 GitHub 逛逛，或者通过邮件交流。"
+      "最近在折腾自己的 AIPM 工作台，也在公众号「小皮蛋oxo」记录 AI 与产品思考。欢迎来我的 GitHub 逛逛，或者通过邮件交流。"
     ],
     "tags": [
       "🛠️ 小工具",
@@ -114,6 +114,14 @@ window.PERSONAL_DATA = {
       "category": "上下文工程",
       "summary": "从 AI 重复采用已撤回的方案谈起，梳理上下文、RAG、长期记忆和压缩机制，讨论怎样让模型依据当前有效的信息工作。",
       "link": "https://mp.weixin.qq.com/s/a2-rKC17ZYztQA0qyGIXRA"
+    },
+    {
+      "title": "AI 替我干活以后，谁来检查它干得对不对？",
+      "date": "2026-09-27",
+      "readTime": "微信公众号原文",
+      "category": "AI 与工作",
+      "summary": "AI 生成初稿之后，核实依据、检查计算和判断能否交付仍需要投入。结合研究与案例，讨论怎样把验收放回任务流程。",
+      "link": "https://mp.weixin.qq.com/s/w00M8GqeNsKV732Do3eCMA"
     }
   ],
   "socials": [
