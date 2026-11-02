@@ -294,7 +294,7 @@ window.PERSONAL_DATA = {
     "items": [
       {
         "icon": "clapperboard",
-        "title": "序幕 Prelude · AI 短镜头",
+        "title": "序幕 Prelude",
         "stage": "持续打磨",
         "description": "从文字或参考图生成 AI 短镜头，已跑通生成、保存、播放与下载，最近在优化播放体验和作品管理。",
         "next": "接下来，继续打磨生成质量与朋友试用体验。"
