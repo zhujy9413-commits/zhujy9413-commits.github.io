@@ -202,7 +202,7 @@ window.PERSONAL_DATA = {
       "status": "个人定制 · MIT",
       "tone": "indigo",
       "githubUrl": "https://github.com/zhujy9413-commits/xiaopidan-aipm-workbench",
-      "group": "ai"
+      "group": "fun"
     }
   ],
   "projectCategories": [],
