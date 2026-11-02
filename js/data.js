@@ -293,11 +293,11 @@ window.PERSONAL_DATA = {
     "updatedAt": "2026-11-02",
     "items": [
       {
-        "icon": "battery-charging",
-        "title": "研发知识助手",
-        "stage": "模拟验证",
-        "description": "把报告评审、知识检索和人工复核串成一个流程，目前已完成模拟资料下的软件验证。",
-        "next": "接下来，准备可用性试用与真实资料适配。"
+        "icon": "clapperboard",
+        "title": "序幕 Prelude · AI 短镜头",
+        "stage": "持续打磨",
+        "description": "从文字或参考图生成 AI 短镜头，已跑通生成、保存、播放与下载，最近在优化播放体验和作品管理。",
+        "next": "接下来，继续打磨生成质量与朋友试用体验。"
       },
       {
         "icon": "puzzle",
