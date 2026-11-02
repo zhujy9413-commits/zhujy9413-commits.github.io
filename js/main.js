@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderHero(data.profile, data.metrics, data.terminalTabs);
   renderMarquee(data.marqueeSkills);
   renderAboutMe(data.aboutMe);
+  renderNow(data.now);
   renderSkills(data.skillCategories);
   renderProjects(data.projects.filter(project => project.group === 'ai'), 'ai-projects-grid');
   renderProjects(data.projects.filter(project => project.group === 'fun'), 'fun-projects-grid');
@@ -379,6 +380,39 @@ function renderAboutMe(aboutMe) {
       </div>
     `).join('');
   }
+}
+
+// Recent notes stay separate from the category links above.
+function renderNow(now) {
+  const grid = document.getElementById('now-grid');
+  const updated = document.getElementById('now-updated');
+  if (!grid || !now) return;
+  if (updated) {
+    updated.dateTime = now.updatedAt;
+    updated.textContent = now.updatedAt.replaceAll('-', '.');
+  }
+  grid.replaceChildren(...now.items.map(item => {
+    const card = document.createElement('article');
+    card.className = 'spotlight-card now-card';
+    const header = document.createElement('div');
+    header.className = 'now-card-heading';
+    const icon = document.createElement('i');
+    icon.setAttribute('data-lucide', item.icon);
+    icon.setAttribute('aria-hidden', 'true');
+    const title = document.createElement('h4');
+    title.textContent = item.title;
+    const stage = document.createElement('span');
+    stage.className = 'now-stage';
+    stage.textContent = item.stage;
+    header.append(icon, title, stage);
+    const description = document.createElement('p');
+    description.textContent = item.description;
+    const next = document.createElement('p');
+    next.className = 'now-next';
+    next.textContent = item.next;
+    card.append(header, description, next);
+    return card;
+  }));
 }
 
 /* ==========================================================================

@@ -425,3 +425,17 @@ body {
 .hub-content{margin-top:28px;padding-top:8px}
 .hub-panel{outline-offset:8px}
 @media(max-width:640px){#explore{scroll-margin-top:105px}.hub-title{font-size:18px}}
+
+/* Dated progress notes complement the biography and project categories. */
+#about,#now{scroll-margin-top:115px}
+.now-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+.now-updated{font-family:var(--font-mono);font-size:11px;color:var(--text-muted);white-space:nowrap}
+.now-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.now-card{padding:28px;display:flex;flex-direction:column;gap:18px;min-width:0}
+.now-card-heading{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.now-card-heading>svg{width:20px;height:20px;color:var(--accent-primary);flex-shrink:0}
+.now-card h4{font-size:17px;font-weight:700;color:var(--text-primary);line-height:1.5}
+.now-stage{margin-left:auto;font-size:10px;color:var(--tag-text);background:var(--tag-bg);border:1px solid var(--tag-border);border-radius:99px;padding:4px 9px;white-space:nowrap}
+.now-card p{font-size:13px;line-height:1.9;color:var(--text-secondary)}
+.now-card .now-next{margin-top:auto;padding-top:16px;border-top:1px solid var(--border-color);color:var(--text-muted);font-size:12px}
+@media(max-width:640px){.now-heading{align-items:flex-start;flex-direction:column;gap:10px}.now-grid{grid-template-columns:1fr;gap:16px}.now-card{padding:23px}#about,#now{scroll-margin-top:105px}}

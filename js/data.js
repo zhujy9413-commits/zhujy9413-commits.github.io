@@ -78,31 +78,30 @@ window.PERSONAL_DATA = {
   },
   "aboutMe": {
     "paragraphs": [
-      "你好，我是朱家毅，一个爱鼓捣点小玩意的男人。",
-      "这个小站是我的个人空间，用来记录想法、探索和有趣的尝试。",
-      "最近在折腾自己的 AIPM 工作台，也在公众号「小皮蛋oxo」记录 AI 与产品思考。欢迎来我的 GitHub 逛逛，或者通过邮件交流。"
+      "你好，我是朱家毅，一名 AIPM。拥有深圳大学工学学士学位，也曾是一名咖啡店主理人。",
+      "现在，我把对咖啡、AI 和产品的兴趣放进一个个小项目里。从探索口味的 Coffee Buddy，到海龟汤游戏、研发知识助手，我喜欢动手把想法做出来，再看看它们能解决什么问题。",
+      "我把自己提炼的产品方法整理成 Skills，放进个人 AIPM 工作台，也在公众号「小皮蛋oxo」记录 AI 与产品思考。这里会慢慢留下这些尝试、过程和新的发现。"
     ],
     "tags": [
-      "🛠️ 小工具",
-      "🤖 AI 玩法",
-      "✨ 好玩的事",
-      "💡 保持好奇"
+      "AIPM",
+      "前咖啡店主理人",
+      "深圳大学 · 工学学士"
     ],
     "currentFocus": [
       {
-        "icon": "wrench",
-        "title": "小工具",
-        "desc": "从日常的小问题开始，试试更顺手的办法。"
+        "icon": "bot",
+        "title": "个人 Agent",
+        "desc": "从咖啡口味、日常需求出发，探索能持续使用的 AI 助手。"
       },
       {
-        "icon": "bot",
-        "title": "AI 玩法",
-        "desc": "体验新工具，探索有意思的用法。"
+        "icon": "workflow",
+        "title": "产品方法与 Skills",
+        "desc": "整理问题、证据与验收，把产品方法放进实际工作流程。"
       },
       {
         "icon": "sparkles",
-        "title": "好玩的事",
-        "desc": "留一点时间，把灵感变成尝试。"
+        "title": "游戏与创作实验",
+        "desc": "尝试推理互动、图像和短镜头，把有趣的想法做出来。"
       }
     ]
   },
@@ -289,5 +288,24 @@ window.PERSONAL_DATA = {
       "icon": "focus",
       "url": "https://github.com/zhujy9413-commits/xiaopidan-aipm-workbench/blob/main/skills/mvp-skill/SKILL.md"
     }
-  ]
+  ],
+  "now": {
+    "updatedAt": "2026-11-02",
+    "items": [
+      {
+        "icon": "battery-charging",
+        "title": "研发知识助手",
+        "stage": "模拟验证",
+        "description": "把报告评审、知识检索和人工复核串成一个流程，目前已完成模拟资料下的软件验证。",
+        "next": "接下来，准备可用性试用与真实资料适配。"
+      },
+      {
+        "icon": "puzzle",
+        "title": "夜汤 · 多人推理",
+        "stage": "本地原型",
+        "description": "最近补进了多人房流程，可以在本地创建房间、共同提问、投票提示和复盘。",
+        "next": "后续继续探索真实 AI 的多人适配与部署。"
+      }
+    ]
+  }
 };
