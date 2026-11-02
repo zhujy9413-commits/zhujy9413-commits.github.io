@@ -22,10 +22,13 @@ document.addEventListener('DOMContentLoaded', () => {
   renderMarquee(data.marqueeSkills);
   renderAboutMe(data.aboutMe);
   renderSkills(data.skillCategories);
-  renderProjects(data.projects, data.projectCategories);
+  renderProjects(data.projects.filter(project => project.group === 'ai'), 'ai-projects-grid');
+  renderProjects(data.projects.filter(project => project.group === 'fun'), 'fun-projects-grid');
+  renderPersonalSkills(data.personalSkills);
   renderTimeline(data.timeline);
   renderArticles(data.articles);
   renderSocials(data.socials);
+  initCategoryHub();
   
   // 3. 初始化交互系统
   initUptimeCounter(data.profile.siteStartDate);
@@ -288,11 +291,11 @@ function renderHero(profile, metrics, terminalTabs) {
   // 渲染量化指标卡片
   const metricsContainer = document.getElementById('metrics-container');
   if (metricsContainer && metrics) {
-    metricsContainer.innerHTML = metrics.map(m => `
-      <div class="spotlight-card p-5 text-center">
-        <div class="text-2xl sm:text-3xl font-extrabold text-gradient font-display">${m.value}</div>
-        <div class="text-xs sm:text-sm text-dim mt-1">${m.label}</div>
-      </div>
+    metricsContainer.innerHTML = metrics.map((m, index) => `
+      <button type="button" id="tab-${m.key}" role="tab" aria-selected="${index === 0}" aria-controls="${m.key}" tabindex="${index === 0 ? '0' : '-1'}" class="hub-tab spotlight-card p-5 text-center">
+        <span class="block text-2xl sm:text-3xl font-extrabold text-gradient font-display">${m.value}</span>
+        <span class="block text-xs sm:text-sm text-dim mt-1">${m.label}</span>
+      </button>
     `).join('');
   }
 
@@ -420,98 +423,22 @@ function renderSkills(categories) {
 /* ==========================================================================
    10. 渲染与平滑过滤精选项目 (Projects Showcase)
    ========================================================================== */
-function renderProjects(projects, categories) {
-  const filterContainer = document.getElementById('project-filters');
-  const projectGrid = document.getElementById('projects-grid');
-  if (!projectGrid || !projects) return;
-
-  if (filterContainer && categories) {
-    filterContainer.innerHTML = categories.map((cat, idx) => `
-      <button class="project-filter-btn px-4 py-1.5 rounded-full text-xs font-semibold transition-all ${
-        idx === 0
-          ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
-          : 'bg-white/5 hover:bg-white/10 text-body border border-color'
-      }" data-category="${cat}">
-        ${cat}
-      </button>
-    `).join('');
-
-    filterContainer.querySelectorAll('.project-filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterContainer.querySelectorAll('.project-filter-btn').forEach(b => {
-          b.className = 'project-filter-btn px-4 py-1.5 rounded-full text-xs font-semibold transition-all bg-white/5 hover:bg-white/10 text-body border border-color';
-        });
-        btn.className = 'project-filter-btn px-4 py-1.5 rounded-full text-xs font-semibold transition-all bg-indigo-600 text-white shadow-lg shadow-indigo-600/30';
-        
-        const selectedCat = btn.getAttribute('data-category');
-        filterProjectsGrid(selectedCat);
-      });
-    });
-  }
-
-  function filterProjectsGrid(cat) {
-    const cards = projectGrid.querySelectorAll('.project-card');
-    cards.forEach(card => {
-      const cardCat = card.getAttribute('data-category');
-      if (cat === '全部' || cardCat === cat) {
-        card.style.display = 'flex';
-        card.style.opacity = '1';
-        card.style.transform = 'translateY(0) scale(1)';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-  }
-
-  projectGrid.innerHTML = projects.map(proj => `
-    <div class="project-card spotlight-card flex flex-col justify-between" data-category="${proj.category}">
-      <!-- 预览渐变头部 -->
-      <div class="h-44 bg-gradient-to-br ${proj.previewGradient} relative p-6 flex flex-col justify-between border-b border-color">
-        <div class="flex items-center justify-between">
-          <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-slate-900/60 backdrop-blur-md text-white border border-white/15">
-            ${proj.badge || proj.category}
-          </span>
-          <div class="flex items-center gap-2">
-            ${proj.githubUrl ? `
-              <a href="${proj.githubUrl}" target="_blank" rel="noopener noreferrer" class="p-2 rounded-full bg-slate-900/60 hover:bg-slate-900/90 text-white transition-all shadow-sm" title="查看 GitHub 源码">
-                <i data-lucide="github" class="w-4 h-4"></i>
-              </a>
-            ` : ''}
-            ${proj.demoUrl ? `
-              <a href="${proj.demoUrl}" target="_blank" rel="noopener noreferrer" class="p-2 rounded-full bg-slate-900/60 hover:bg-slate-900/90 text-white transition-all shadow-sm" title="在线演示">
-                <i data-lucide="external-link" class="w-4 h-4"></i>
-              </a>
-            ` : ''}
-          </div>
-        </div>
-
-        <div class="mt-auto">
-          <h3 class="text-xl font-bold text-title tracking-wide font-display">${proj.title}</h3>
-        </div>
+function renderProjects(projects, gridId) {
+  const grid = document.getElementById(gridId);
+  if (!grid || !projects) return;
+  const escape = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+  grid.innerHTML = projects.map(project => `
+    <a class="portfolio-card spotlight-card" href="${escape(project.githubUrl)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(project.title)}，查看 GitHub 项目（新标签页）">
+      <div class="portfolio-top">
+        <span class="portfolio-icon tone-${escape(project.tone)}"><i data-lucide="${escape(project.icon)}" aria-hidden="true"></i></span>
+        <span class="portfolio-category">${escape(project.category)}</span>
+        <i data-lucide="arrow-up-right" class="portfolio-arrow" aria-hidden="true"></i>
       </div>
-
-      <!-- 卡片详情内容 -->
-      <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between">
-        <div>
-          <p class="text-xs sm:text-sm text-body leading-relaxed mb-5 line-clamp-2">${proj.description}</p>
-          <div class="flex flex-wrap gap-1.5 mb-6">
-            ${proj.tags.map(t => `
-              <span class="px-2.5 py-1 text-xs rounded-lg bg-indigo-500/10 text-indigo-500 dark:text-indigo-300 border border-indigo-500/20 font-medium">
-                ${t}
-              </span>
-            `).join('')}
-          </div>
-        </div>
-
-        <div class="flex items-center justify-between pt-4 border-t border-color">
-          <button class="open-project-detail-btn text-xs font-bold text-indigo-500 hover:text-indigo-600 dark:text-indigo-400 dark:hover:text-indigo-300 flex items-center gap-1.5 transition-colors" data-id="${proj.id}">
-            <span>查看完整设计与亮点</span>
-            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-          </button>
-          <span class="text-xs text-dim font-mono">${proj.category}</span>
-        </div>
-      </div>
-    </div>
+      <h3>${escape(project.title)}</h3>
+      <p class="portfolio-description">${escape(project.description)}</p>
+      <div class="portfolio-tags">${project.tags.map(tag => `<span>${escape(tag)}</span>`).join('')}</div>
+      <div class="portfolio-bottom"><span>${escape(project.status)}</span><span class="portfolio-link"><i data-lucide="github" aria-hidden="true"></i>查看 GitHub 项目</span></div>
+    </a>
   `).join('');
 }
 
@@ -852,4 +779,58 @@ function showToast(message, duration = 3000) {
     toast.classList.add('hide');
     setTimeout(() => toast.remove(), 300);
   }, duration);
+}
+
+function renderPersonalSkills(skills) {
+  const container = document.getElementById('personal-skills-grid');
+  if (!container || !skills) return;
+  container.replaceChildren(...skills.map(skill => {
+    const card = document.createElement('a');
+    card.className = 'personal-skill spotlight-card';
+    card.href = skill.url; card.target = '_blank'; card.rel = 'noopener noreferrer';
+    card.setAttribute('aria-label', `${skill.title}，查看 Skill 文件（新标签页）`);
+    const icon = document.createElement('i'); icon.setAttribute('data-lucide', skill.icon); icon.setAttribute('aria-hidden', 'true');
+    const title = document.createElement('h4'); title.textContent = skill.title;
+    const description = document.createElement('p'); description.textContent = skill.description;
+    const footer = document.createElement('span'); footer.textContent = '查看 Skill ↗';
+    card.append(icon, title, description, footer); return card;
+  }));
+}
+
+function initCategoryHub() {
+  const tabs = Array.from(document.querySelectorAll('#metrics-container [role="tab"]'));
+  const keys = ['tools', 'ai', 'fun', 'ideas'];
+  const aliases = {workbench:'ai', projects:'ai', articles:'ideas'};
+  function activate(key, focus = false) {
+    if (!keys.includes(key)) return;
+    tabs.forEach(tab => {
+      const selected = tab.getAttribute('aria-controls') === key;
+      tab.setAttribute('aria-selected', String(selected)); tab.tabIndex = selected ? 0 : -1;
+      document.getElementById(tab.getAttribute('aria-controls')).hidden = !selected;
+      if (selected && focus) tab.focus();
+    });
+  }
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => {
+      const key = tab.getAttribute('aria-controls'); activate(key);
+      history.replaceState(null, '', '#' + key);
+    });
+    tab.addEventListener('keydown', event => {
+      let next;
+      if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+      if (event.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
+      if (event.key === 'Home') next = 0;
+      if (event.key === 'End') next = tabs.length - 1;
+      if (next === undefined) return;
+      event.preventDefault(); const key = keys[next]; activate(key, true); history.replaceState(null, '', '#' + key);
+    });
+  });
+  function syncHash(scroll) {
+    const raw = location.hash.slice(1); const key = aliases[raw] || raw;
+    if (!keys.includes(key)) return;
+    activate(key);
+    if (scroll) document.getElementById('explore').scrollIntoView({block:'start'});
+  }
+  syncHash(false);
+  window.addEventListener('hashchange', () => syncHash(true));
 }

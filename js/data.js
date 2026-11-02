@@ -19,20 +19,24 @@ window.PERSONAL_DATA = {
   ],
   "metrics": [
     {
+      "key": "tools",
       "value": "Tools",
-      "label": "小工具"
+      "label": "我的 Skills"
     },
     {
+      "key": "ai",
       "value": "AI",
-      "label": "AI 玩法"
+      "label": "AI 应用与 Agent"
     },
     {
+      "key": "fun",
       "value": "Fun",
-      "label": "好玩的事"
+      "label": "游戏与创作实验"
     },
     {
+      "key": "ideas",
       "value": "Ideas",
-      "label": "好奇与灵感"
+      "label": "文章与思考"
     }
   ],
   "marqueeSkills": [
@@ -103,7 +107,104 @@ window.PERSONAL_DATA = {
     ]
   },
   "skillCategories": [],
-  "projects": [],
+  "projects": [
+    {
+      "id": "coffee-buddy",
+      "title": "Coffee Buddy · 咖啡探索搭子",
+      "description": "记录菜单与饮用体验，按个人口味寻找下一次咖啡尝试，并说明推荐依据。",
+      "category": "个人咖啡 Agent",
+      "icon": "coffee",
+      "tags": [
+        "口味画像",
+        "菜单记录",
+        "可解释推荐"
+      ],
+      "status": "网页产品",
+      "tone": "amber",
+      "githubUrl": "https://github.com/zhujy9413-commits/coffee-buddy",
+      "group": "ai"
+    },
+    {
+      "id": "ai-turtle-soup",
+      "title": "夜汤 · AI 海龟汤",
+      "description": "围绕提问与推理的海龟汤体验，包含产品设计、单人原型和本地多人房流程。",
+      "category": "互动游戏",
+      "icon": "puzzle",
+      "tags": [
+        "推理互动",
+        "多人房流程",
+        "产品复盘"
+      ],
+      "status": "本地原型",
+      "tone": "violet",
+      "githubUrl": "https://github.com/zhujy9413-commits/ai-turtle-soup",
+      "group": "fun"
+    },
+    {
+      "id": "forma-ai-studio",
+      "title": "Forma 造物",
+      "description": "面向电商素材与批量短剧的创作工作台，包含交互 Demo、产品文档和真实模型实测样例。",
+      "category": "AI 内容创作",
+      "icon": "palette",
+      "tags": [
+        "电商素材",
+        "批量短剧",
+        "模型评测"
+      ],
+      "status": "本地 Demo · 非商业许可",
+      "tone": "rose",
+      "githubUrl": "https://github.com/zhujy9413-commits/forma-ai-studio",
+      "group": "fun"
+    },
+    {
+      "id": "prelude-cloud-studio",
+      "title": "序幕 Prelude",
+      "description": "从文字或参考图开始制作 AI 短镜头，支持任务恢复、作品管理、播放与下载。",
+      "category": "AI 视频创作",
+      "icon": "clapperboard",
+      "tags": [
+        "短镜头",
+        "参考图生成",
+        "作品管理"
+      ],
+      "status": "本地工作室",
+      "tone": "cyan",
+      "githubUrl": "https://github.com/zhujy9413-commits/prelude-cloud-studio",
+      "group": "fun"
+    },
+    {
+      "id": "powerbank-rag-agent",
+      "title": "充电宝研发评审与知识助手",
+      "description": "探索保护功能测试报告评审和内部知识检索，围绕版本、引用与复核组织依据。",
+      "category": "研发与 RAG",
+      "icon": "battery-charging",
+      "tags": [
+        "报告评审",
+        "知识检索",
+        "MVP / PRD"
+      ],
+      "status": "受控原型 · 模拟验证",
+      "tone": "emerald",
+      "githubUrl": "https://github.com/zhujy9413-commits/powerbank-rag-agent",
+      "group": "ai"
+    },
+    {
+      "id": "xiaopidan-aipm-workbench",
+      "title": "小皮蛋的 AIPM 工作台",
+      "description": "基于 DeepSeek Harness 定制，把想法、研究、立项与 PRD 放进同一个产品工作流程。",
+      "category": "产品工作流",
+      "icon": "panels-top-left",
+      "tags": [
+        "阶段管理",
+        "六个 Skills",
+        "关键确认卡"
+      ],
+      "status": "个人定制 · MIT",
+      "tone": "indigo",
+      "githubUrl": "https://github.com/zhujy9413-commits/xiaopidan-aipm-workbench",
+      "group": "ai"
+    }
+  ],
   "projectCategories": [],
   "timeline": [],
   "articles": [
@@ -143,6 +244,50 @@ window.PERSONAL_DATA = {
       "icon": "message-circle",
       "desc": "小皮蛋oxo",
       "isPlain": true
+    }
+  ],
+  "personalSkills": [
+    {
+      "name": "xqdy-skill",
+      "title": "问题定义",
+      "description": "先把原始想法、真实问题与任务边界梳理清楚。",
+      "icon": "scan-search",
+      "url": "https://github.com/zhujy9413-commits/xiaopidan-aipm-workbench/blob/main/skills/xqdy-skill/SKILL.md"
+    },
+    {
+      "name": "yhhx-skill",
+      "title": "用户画像",
+      "description": "识别人群、使用场景与证据缺口。",
+      "icon": "users",
+      "url": "https://github.com/zhujy9413-commits/xiaopidan-aipm-workbench/blob/main/skills/yhhx-skill/SKILL.md"
+    },
+    {
+      "name": "xqc-skill",
+      "title": "需求池",
+      "description": "整理用户问题、候选方案与优先级。",
+      "icon": "list-checks",
+      "url": "https://github.com/zhujy9413-commits/xiaopidan-aipm-workbench/blob/main/skills/xqc-skill/SKILL.md"
+    },
+    {
+      "name": "jpfx-skill",
+      "title": "竞品分析",
+      "description": "用统一维度横向比较，保留依据与待验证项。",
+      "icon": "columns-3",
+      "url": "https://github.com/zhujy9413-commits/xiaopidan-aipm-workbench/blob/main/skills/jpfx-skill/SKILL.md"
+    },
+    {
+      "name": "lxbg-skill",
+      "title": "立项报告",
+      "description": "检验立项依据，形成可讨论的产品判断。",
+      "icon": "file-check-2",
+      "url": "https://github.com/zhujy9413-commits/xiaopidan-aipm-workbench/blob/main/skills/lxbg-skill/SKILL.md"
+    },
+    {
+      "name": "mvp-skill",
+      "title": "MVP 范围",
+      "description": "围绕关键假设，明确最小范围与验收标准。",
+      "icon": "focus",
+      "url": "https://github.com/zhujy9413-commits/xiaopidan-aipm-workbench/blob/main/skills/mvp-skill/SKILL.md"
     }
   ]
 };
